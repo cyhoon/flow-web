@@ -34,6 +34,13 @@ class GoOutContainer extends Component {
         return (
             <Store.Provider value={this.state}>
                 <Fragment>
+                    <table style={{ marginLeft: "40px", borderRadius: "3px", width: "90%", backgroundColor: "#313131", color: "white"}}>
+                        <tr>
+                            <th>이메일</th>
+                            <th>시작 날짜</th>
+                            <th>만료 날짜</th>
+                            <th>승인</th>
+                        </tr>
                     <Store.Consumer>
                         {store => {
                             return Object.keys(store.goOutRequestUsers).map(key => (
@@ -50,6 +57,7 @@ class GoOutContainer extends Component {
                             ));
                         }}
                     </Store.Consumer>
+                    </table>
                 </Fragment>
             </Store.Provider>
         );
