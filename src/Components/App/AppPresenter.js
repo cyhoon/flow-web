@@ -10,6 +10,7 @@ const Container = styled.div`
     width: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-bottom: 50px;
 `;
 
 const GoOutContainer = styled.div`
