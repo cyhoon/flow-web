@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Header from 'Components/Header';
 import NoticeWrite from 'Components/NoticeWrite';
+import NoticeList from 'Components/NoticeList';
 
 const Container = styled.div`
     width: 100%;
@@ -33,6 +34,7 @@ const NoticePresenter = () => {
             <Header />
                 <Store.Consumer>
                   {store => {
+                    console.info('current store: ', store);
                     return (
                         <Container>
                             <WriteContainer>
@@ -41,6 +43,7 @@ const NoticePresenter = () => {
                             </WriteContainer>
                             <ViewContainer>
                                 <Title>공지 리스트</Title>
+                                <NoticeList />
                             </ViewContainer>
                         </Container>
                     );

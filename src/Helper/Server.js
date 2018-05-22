@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const host = 'http://flow.cafe24app.com';
+// const host = 'http://flow.cafe24app.com';
+const host = 'http://localhost:4000';
 
 const acceptGoOutUrl = '/out/go/accept'; // 외출 승인
 const acceptSleepOutUrl = '/out/sleep/accept'; // 외박 승인
@@ -8,7 +9,10 @@ const acceptSleepOutUrl = '/out/sleep/accept'; // 외박 승인
 const unAcceptGoOutUrl = '/out/go/list/unaccept'; // 승인되지 않은 외출 신청 조회
 const unAcceptSleepOutUrl = '/out/sleep/list/unaccept'; // 승인되지 않은 외박 신청 조회
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyXzFAZGdzdy5ocy5rciIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjY4NjU2NTUsImV4cCI6MTUyNzQ3MDQ1NSwiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.tIRF_zeOzP5famiSIg8Np78AF74LKhIoYWpnCpwNrV8';
+const selectAllNotice = '/notice';
+
+// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyXzFAZGdzdy5ocy5rciIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjY4NjU2NTUsImV4cCI6MTUyNzQ3MDQ1NSwiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.tIRF_zeOzP5famiSIg8Np78AF74LKhIoYWpnCpwNrV8';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJpaGVsbG8wNzIwQGdtYWlsLmNvbSIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjoyLCJpYXQiOjE1MjY5NTU0NjgsImV4cCI6MTUyNzU2MDI2OCwiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.C0jIOvkfjXKLH-P0ce_5CZyK0x5pU_SZxJxuAQ1Tg-w';
 
 
 const GetGoOutData = async () => { // 외출 데이터를 가지고 온다.
@@ -45,4 +49,11 @@ const AcceptSleepOut = (sleep_out_idx, class_idx) => { // 외박 승인
     }, {headers: {'x-access-token': `${token}`}});
 }
 
-export { GetGoOutData, GetSleepOutData, AcceptGoOut, AcceptSleepOut };
+const GetNoticeList = async () => {
+    const data = await axios.get(host + selectAllNotice, {headers: {'x-access-token': `${token}`}});
+    const noticeList = data.data.data.list;
+
+    return noticeList;
+}
+
+export { GetGoOutData, GetSleepOutData, AcceptGoOut, AcceptSleepOut, GetNoticeList };
