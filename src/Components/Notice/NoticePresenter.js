@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 import Header from 'Components/Header';
+import NoticeWrite from 'Components/NoticeWrite';
 
 const Container = styled.div`
     width: 100%;
@@ -32,6 +33,7 @@ const NoticePresenter = () => {
             <Container>
                 <WriteContainer>
                     <Title>공지 작성</Title>
+                    <NoticeWrite />
                 </WriteContainer>
                 <ViewContainer>
                     <Title>공지 리스트</Title>
