@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
+import Store from 'store';
 
 import Header from 'Components/Header';
 import NoticeWrite from 'Components/NoticeWrite';
@@ -30,15 +31,17 @@ const NoticePresenter = () => {
     return (
         <Fragment>
             <Header />
-            <Container>
-                <WriteContainer>
-                    <Title>공지 작성</Title>
-                    <NoticeWrite />
-                </WriteContainer>
-                <ViewContainer>
-                    <Title>공지 리스트</Title>
-                </ViewContainer>
-            </Container>
+            <Store.Provider value={this.state}>
+                <Container>
+                    <WriteContainer>
+                        <Title>공지 작성</Title>
+                        <NoticeWrite />
+                    </WriteContainer>
+                    <ViewContainer>
+                        <Title>공지 리스트</Title>
+                    </ViewContainer>
+                </Container>
+            </Store.Provider>
         </Fragment>
     );
 };

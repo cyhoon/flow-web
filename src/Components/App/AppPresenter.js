@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Store from 'store';
-import styled from 'styled-components';
-
 import RequestPresenter from 'Components/Request';
 import NoticePresenter from 'Components/Notice';
 

@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import FontAwesome from "react-fontawesome";
 
 const UserInformation = styled.tr`
     color: #313131;

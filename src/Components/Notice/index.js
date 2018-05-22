@@ -1,2 +1,2 @@
-import NoticePresenter from './NoticePresenter';
-export default NoticePresenter;
+import NoticeContainer from './NoticeContainer';
+export default NoticeContainer;
