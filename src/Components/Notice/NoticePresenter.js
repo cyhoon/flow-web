@@ -15,14 +15,15 @@ const Container = styled.div`
 
 const WriteContainer = styled.div`
     grid-start-column: 1;
+    padding-left: 40px;
 `;
 
 const ViewContainer = styled.div`
     grid-start-column: 2;
+    padding-left: 40px;
 `;
 
 const Title = styled.h3`
-    padding-left: 40px;
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 50px;
@@ -43,7 +44,7 @@ const NoticePresenter = () => {
                             </WriteContainer>
                             <ViewContainer>
                                 <Title>공지 리스트</Title>
-                                <NoticeList />
+                                <NoticeList list={store.list} />
                             </ViewContainer>
                         </Container>
                     );

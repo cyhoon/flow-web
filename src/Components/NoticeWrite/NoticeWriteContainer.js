@@ -4,7 +4,6 @@ import Store from 'store';
 
 const Container = styled.div`
     width: 50%;
-    margin-left: 40px;
 `;
 
 const TextArea = styled.textarea`
