@@ -1,4 +1,5 @@
 import axios from 'axios';
+import randomstring from 'randomstring';
 
 // const host = 'http://flow.cafe24app.com';
 const host = 'http://localhost:4000';
@@ -9,10 +10,11 @@ const acceptSleepOutUrl = '/out/sleep/accept'; // 외박 승인
 const unAcceptGoOutUrl = '/out/go/list/unaccept'; // 승인되지 않은 외출 신청 조회
 const unAcceptSleepOutUrl = '/out/sleep/list/unaccept'; // 승인되지 않은 외박 신청 조회
 
-const selectAllNotice = '/notice';
+const noticeUrl = '/notice';
+const uploadUrl = '/upload';
 
 // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyXzFAZGdzdy5ocy5rciIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjY4NjU2NTUsImV4cCI6MTUyNzQ3MDQ1NSwiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.tIRF_zeOzP5famiSIg8Np78AF74LKhIoYWpnCpwNrV8';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJpaGVsbG8wNzIwQGdtYWlsLmNvbSIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjoyLCJpYXQiOjE1MjY5NTU0NjgsImV4cCI6MTUyNzU2MDI2OCwiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.C0jIOvkfjXKLH-P0ce_5CZyK0x5pU_SZxJxuAQ1Tg-w';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJpaGVsbG8wNzIwQGdtYWlsLmNvbSIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjcwMzcxMDMsImV4cCI6MTUyNzY0MTkwMywiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.HE68Gxvy75YszjcFhmwnjgr0rZEZli050KSpzn0wsBU';
 
 
 const GetGoOutData = async () => { // 외출 데이터를 가지고 온다.
@@ -50,10 +52,65 @@ const AcceptSleepOut = (sleep_out_idx, class_idx) => { // 외박 승인
 }
 
 const GetNoticeList = async () => {
-    const data = await axios.get(host + selectAllNotice, {headers: {'x-access-token': `${token}`}});
+    const data = await axios.get(host + noticeUrl, {headers: {'x-access-token': `${token}`}});
     const noticeList = data.data.data.list;
 
     return noticeList;
 }
 
-export { GetGoOutData, GetSleepOutData, AcceptGoOut, AcceptSleepOut, GetNoticeList };
+const FileUpload = async (fileData) => {
+    const fileName = randomstring.generate();
+
+    const formData = new FormData();
+    formData.append('file', fileData);
+    formData.append('fileName', fileName);
+
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data',
+            'x-access-token': `${token}`,
+        }
+    }
+
+    const response = await axios.post(host + uploadUrl, formData, config);
+    return response.data;
+}
+
+const WriteNotice = async (content, write_date, modify_date, file) => {
+    const config = {
+        headers: {
+            'content-type': 'application/json',
+            'x-access-token': `${token}`,
+        }
+    };
+
+    let data = null;
+
+    if (file) {
+        data = {
+            content,
+            write_date,
+            modify_date,
+            file,
+        };
+    } else {
+        data = {
+            content,
+            write_date,
+            modify_date
+        }
+    }
+
+    const response = await axios.post(host + noticeUrl, data, config);
+    return response.data;
+}
+
+export { 
+    GetGoOutData, 
+    GetSleepOutData, 
+    AcceptGoOut, 
+    AcceptSleepOut, 
+    GetNoticeList,
+    FileUpload,
+    WriteNotice
+};

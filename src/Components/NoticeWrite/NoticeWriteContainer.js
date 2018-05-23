@@ -37,21 +37,34 @@ const Button = styled.button`
 class NoticeWriteContainer extends Component {
     constructor(props) {
       super(props);
+
+      this.state = {
+          content: '',
+      };
+    }
+
+    handleContent = (event) => {
+        this.setState({ content: event.target.value });
     }
 
     getFileData = (event) => {
         const fileData = event.target.files[0];
-        console.log('file data: ', fileData);
+        this.props.fileUpload(fileData);
+    }
+
+    submitData = async () => {
+        await this.props.writeNotice(this.state.content); 
+        await this.setState({ content: '' });
     }
 
     render() {
         return (
           <Container>
-              <TextArea />
+              <TextArea value={ this.state.content } onChange={ this.handleContent }></TextArea>
               <InputFile 
                 type='file'
                 onChange={this.getFileData} />
-              <Button>완료</Button>
+              <Button onClick={() => { this.submitData(); }}>완료</Button>
           </Container>        
         );
     }

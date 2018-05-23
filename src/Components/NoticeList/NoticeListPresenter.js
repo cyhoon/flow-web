@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
+import {
+  changeDateFormat
+} from 'Helper/CustomDate';
+
 const Container = styled.div`
     width: 50%;
     height: 50px;
@@ -24,8 +28,8 @@ const NoticeListPresenter = ({ writer, content, writeDate, modifyDate }) => {
             <Tr>
                 <td>{writer}</td>
                 <td>{content}</td>
-                <td>{writeDate}</td>
-                <td>{modifyDate}</td>
+                <td>{changeDateFormat(writeDate)}</td>
+                <td>{changeDateFormat(modifyDate)}</td>
             </Tr>
         </Fragment>
     );

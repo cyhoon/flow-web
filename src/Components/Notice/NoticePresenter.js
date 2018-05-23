@@ -40,7 +40,10 @@ const NoticePresenter = () => {
                         <Container>
                             <WriteContainer>
                                 <Title>공지 작성</Title>
-                                <NoticeWrite />
+                                <NoticeWrite
+                                    writeNotice={store.writeNotice}
+                                    fileUpload={store.fileUpload}
+                                />
                             </WriteContainer>
                             <ViewContainer>
                                 <Title>공지 리스트</Title>
