@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import FontAwesome from 'react-fontawesome';
 import Flex, { FlexItem } from 'styled-flex-component';
 
 const Header = styled.header`

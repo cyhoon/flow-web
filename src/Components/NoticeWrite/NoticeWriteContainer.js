@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import Store from 'store';
 
 const Container = styled.div`
     width: 80%;

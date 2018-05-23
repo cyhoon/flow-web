@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Store from 'store';
 import NoticePresenter from './NoticePresenter';
 
