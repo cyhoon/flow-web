@@ -1,8 +1,8 @@
 import axios from 'axios';
 import randomstring from 'randomstring';
 
-// const host = 'http://flow.cafe24app.com';
-const host = 'http://localhost:4000';
+const host = 'http://flow.cafe24app.com';
+// const host = 'http://localhost:4000';
 
 const acceptGoOutUrl = '/out/go/accept'; // 외출 승인
 const acceptSleepOutUrl = '/out/sleep/accept'; // 외박 승인
@@ -13,8 +13,8 @@ const unAcceptSleepOutUrl = '/out/sleep/list/unaccept'; // 승인되지 않은 �
 const noticeUrl = '/notice';
 const uploadUrl = '/upload';
 
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyXzFAZGdzdy5ocy5rciIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjY4NjU2NTUsImV4cCI6MTUyNzQ3MDQ1NSwiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.tIRF_zeOzP5famiSIg8Np78AF74LKhIoYWpnCpwNrV8';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJpaGVsbG8wNzIwQGdtYWlsLmNvbSIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjcwMzcxMDMsImV4cCI6MTUyNzY0MTkwMywiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.HE68Gxvy75YszjcFhmwnjgr0rZEZli050KSpzn0wsBU';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyXzFAZGdzdy5ocy5rciIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjcwNTgwODEsImV4cCI6MTUyNzY2Mjg4MSwiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.0I9i0dZk606_CbWzC6DwNxr_-AjMFTQQFZC2TGnp91Q';
+// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJpaGVsbG8wNzIwQGdtYWlsLmNvbSIsImNsYXNzSWR4IjpudWxsLCJhdXRoIjowLCJpYXQiOjE1MjcwMzcxMDMsImV4cCI6MTUyNzY0MTkwMywiaXNzIjoiamVmZmNob2kuY29tIiwic3ViIjoidG9rZW4ifQ.HE68Gxvy75YszjcFhmwnjgr0rZEZli050KSpzn0wsBU';
 
 
 const GetGoOutData = async () => { // 외출 데이터를 가지고 온다.

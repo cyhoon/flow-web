@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import RequestPresenter from 'Components/Request';
 import NoticePresenter from 'Components/Notice';
+import RequestPresenter from 'Components/Request';
 
 const AppPresenter = () => (
     <Fragment>
         <BrowserRouter>
             <Fragment>
-                <Route exact path='/' component={ RequestPresenter } />
-                <Route path='/notice' component={ NoticePresenter } />
+                <Route exact path='/' component={ NoticePresenter } />
+                <Route path='/out' component={ RequestPresenter } />
             </Fragment>
         </BrowserRouter>
     </Fragment>
