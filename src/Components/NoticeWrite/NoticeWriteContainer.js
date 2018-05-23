@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Store from 'store';
 
 const Container = styled.div`
-    width: 50%;
+    width: 80%;
 `;
 
 const TextArea = styled.textarea`
